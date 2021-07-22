@@ -11,27 +11,27 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
-@Table(name = "employees")
+@Table(name = "users")
 @NamedQueries({
     @NamedQuery(
-        name = "getAllEmployees",
-        query = "SELECT e FROM Employee AS e ORDER BY e.id DESC"
+        name = "getAllUsers",
+        query = "SELECT e FROM User AS e ORDER BY e.id DESC"
     ),
     @NamedQuery(
-        name = "getEmployeesCount",
-        query = "SELECT COUNT(e) FROM Employee AS e"
+        name = "getUsersCount",
+        query = "SELECT COUNT(e) FROM User AS e"
     ),
     @NamedQuery(
         name = "checkRegisteredEmail",
-        query = "SELECT COUNT(e) FROM Employee AS e WHERE e.email = :email"
+        query = "SELECT COUNT(e) FROM User AS e WHERE e.email = :email"
     ),
     @NamedQuery(
         name = "checkLoginCodeAndPassword",
-        query = "SELECT e FROM Employee AS e WHERE e.email = :email AND e.password = :pass"
+        query = "SELECT e FROM User AS e WHERE e.email = :email AND e.password = :pass"
     )
 })
 @Entity
-public class Employee {
+public class User {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -84,11 +84,11 @@ public class Employee {
         this.password = password;
     }
 
-    public Integer getAdmin_flag() {
+    public Integer getPrivilege() {
         return privilege;
     }
 
-    public void setAdmin_flag(Integer privilege) {
+    public void setPrivilege(Integer privilege) {
         this.privilege = privilege;
     }
 

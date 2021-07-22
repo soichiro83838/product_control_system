@@ -5,11 +5,11 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 
-import models.Employee;
+import models.User;
 import utils.DBUtil;
 
-public class EmployeeValidator {
-    public static List<String> validate(Employee e, Boolean emailDuplicateCheckFlag, Boolean passwordCheckFlag) {
+public class UserValidator {
+    public static List<String> validate(User e, Boolean emailDuplicateCheckFlag, Boolean passwordCheckFlag) {
         List<String> errors = new ArrayList<String>();
 
         String email_error = validateCode(e.getEmail(), emailDuplicateCheckFlag);
@@ -40,9 +40,9 @@ public class EmployeeValidator {
         // すでに登録されているemailとの重複チェック
         if(emailDuplicateCheckFlag) {
             EntityManager em = DBUtil.createEntityManager();
-            long employees_count = (long)em.createNamedQuery("checkRegisteredCode", Long.class).setParameter("email", email).getSingleResult();
+            long users_count = (long)em.createNamedQuery("checkRegisteredCode", Long.class).setParameter("email", email).getSingleResult();
             em.close();
-            if(employees_count > 0) {
+            if(users_count > 0) {
                 return "入力されたemailの情報はすでに存在しています。";
             }
         }
