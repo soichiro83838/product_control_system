@@ -26,7 +26,7 @@ import javax.persistence.Table;
         query = "SELECT COUNT(e) FROM User AS e WHERE e.email = :email"
     ),
     @NamedQuery(
-        name = "checkLoginCodeAndPassword",
+        name = "checkLoginEmailAndPassword",
         query = "SELECT e FROM User AS e WHERE e.email = :email AND e.password = :pass"
     )
 })

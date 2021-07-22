@@ -12,7 +12,7 @@ public class UserValidator {
     public static List<String> validate(User e, Boolean emailDuplicateCheckFlag, Boolean passwordCheckFlag) {
         List<String> errors = new ArrayList<String>();
 
-        String email_error = validateCode(e.getEmail(), emailDuplicateCheckFlag);
+        String email_error = validateEmail(e.getEmail(), emailDuplicateCheckFlag);
         if(!email_error.equals("")) {
             errors.add(email_error);
         }
@@ -31,7 +31,7 @@ public class UserValidator {
     }
 
     // email
-    private static String validateCode(String email, Boolean emailDuplicateCheckFlag) {
+    private static String validateEmail(String email, Boolean emailDuplicateCheckFlag) {
         // 必須入力チェック
         if(email == null || email.equals("")) {
             return "emailを入力してください。";
@@ -40,7 +40,7 @@ public class UserValidator {
         // すでに登録されているemailとの重複チェック
         if(emailDuplicateCheckFlag) {
             EntityManager em = DBUtil.createEntityManager();
-            long users_count = (long)em.createNamedQuery("checkRegisteredCode", Long.class).setParameter("email", email).getSingleResult();
+            long users_count = (long)em.createNamedQuery("checkRegisteredEmail", Long.class).setParameter("email", email).getSingleResult();
             em.close();
             if(users_count > 0) {
                 return "入力されたemailの情報はすでに存在しています。";
