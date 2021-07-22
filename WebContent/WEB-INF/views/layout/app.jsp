@@ -14,9 +14,7 @@
                 <div id="header_menu">
                     <h1><a href="<c:url value='/' />">品質管理システム</a></h1>&nbsp;&nbsp;&nbsp;
                     <c:if test="${sessionScope.login_user != null}">
-                        <c:if test="${sessionScope.login_user.privilege == 1}">
-                            <a href="<c:url value='/users/index' />">ユーザー管理</a>&nbsp;
-                        </c:if>
+                        <a href="<c:url value='/users/index' />">ユーザー管理</a>&nbsp;
                         <a href="<c:url value='/parts/index' />">部品</a>&nbsp;
                     </c:if>
                 </div>
