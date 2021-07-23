@@ -9,12 +9,12 @@
 
     </div>
 </c:if>
-<label for="email">email</label><br />
-<input type="text" name="email" value="${user.email}" />
+<label for="name">名前</label><br />
+<input type="text" name="name" value="${user.name}" />
 <br /><br />
 
-<label for="name">氏名</label><br />
-<input type="text" name="name" value="${user.name}" />
+<label for="email">メールアドレス</label><br />
+<input type="text" name="email" value="${user.email}" />
 <br /><br />
 
 <label for="password">パスワード</label><br />

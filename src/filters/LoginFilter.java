@@ -45,26 +45,19 @@ public class LoginFilter implements Filter {
 
             // セッションスコープに保存されたユーザー（ログインユーザー）情報を取得
             User e = (User)session.getAttribute("login_user");
-
-            if(!servlet_path.equals("/login")) {        // ログイン画面以外について
-                // ログアウトしている状態であれば
-                // ログイン画面にリダイレクト
-                if(e == null) {
-                    ((HttpServletResponse)response).sendRedirect(context_path + "/login");
+            // ログインしていない状態で"/login"と"/user/new"と"/index.html"以外にアクセスした場合、トップページへ戻す
+            if (e == null && !servlet_path.equals("/login") && !servlet_path.equals("/users/new") && !servlet_path.equals("/index.html")) {
+                ((HttpServletResponse) response).sendRedirect(context_path + "/index.html");
+                return;
+            }
+         // ログインしてる状態で"/login"にアクセスした場合、トップページへ戻す
+            if (e != null && servlet_path.equals("/login")) {
+                    ((HttpServletResponse) response).sendRedirect(context_path + "/index.html");
                     return;
-                }
-
-            } else {                                    // ログイン画面について
-                // ログインしているのにログイン画面を表示させようとした場合は
-                // システムのトップページにリダイレクト
-                if(e != null) {
-                    ((HttpServletResponse)response).sendRedirect(context_path + "/");
-                    return;
-                }
             }
         }
+            chain.doFilter(request, response);
 
-        chain.doFilter(request, response);
     }
 
     /**
