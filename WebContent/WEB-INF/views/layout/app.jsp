@@ -23,17 +23,9 @@
                     </div>
                 </c:if>
             </div>
-            <div id="content">
+                <div id="content">
                 ${param.content}
-                 <c:if test="${sessionScope.login_user != null}">
-             <center><a href="<c:url value='/parts/create' />">部品登録</a></center>&nbsp;
-             <br /><br />
-             <center><a href="<c:url value='/parts/index' />">部品一覧</a></center>&nbsp;
-              <br /><br />
-              <center><a href="<c:url value='/logout' />">ログアウト</a></center>
-              <br /><br />
-              </c:if>
-            </div>
+                </div>
             <div id="footer">
                 by Soichiro Sugiyama.
             </div>

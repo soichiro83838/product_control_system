@@ -1,4 +1,4 @@
-package controllers.users;
+package controllers.parts;
 
 import java.io.IOException;
 import java.util.List;
@@ -11,20 +11,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import models.User;
+import models.Part;
 import utils.DBUtil;
 
 /**
- * Servlet implementation class UsersIndexServlet
+ * Servlet implementation class ReportsIndexServlet
  */
-@WebServlet("/users/index")
-public class UsersIndexServlet extends HttpServlet {
+@WebServlet("/parts/index")
+public class PartsIndexServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public UsersIndexServlet() {
+    public PartsIndexServlet() {
         super();
     }
 
@@ -34,29 +34,32 @@ public class UsersIndexServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         EntityManager em = DBUtil.createEntityManager();
 
-        int page = 1;
+        int page;
         try{
             page = Integer.parseInt(request.getParameter("page"));
-        } catch(NumberFormatException e) { }
-        List<User> users = em.createNamedQuery("getAllUsers", User.class)
-                .setFirstResult(15 * (page - 1))
-                .setMaxResults(15)
-                .getResultList();
+        } catch(Exception e) {
+            page = 1;
+        }
+        List<Part> parts = em.createNamedQuery("getAllParts", Part.class)
+                                  .setFirstResult(15 * (page - 1))
+                                  .setMaxResults(15)
+                                  .getResultList();
 
-        long users_count = (long)em.createNamedQuery("getUsersCount", Long.class)
-                .getSingleResult();
+        long parts_count = (long)em.createNamedQuery("getPartsCount", Long.class)
+                                     .getSingleResult();
 
         em.close();
 
-        request.setAttribute("users", users);
-        request.setAttribute("users_count", users_count);
+        request.setAttribute("parts", parts);
+        request.setAttribute("parts_count", parts_count);
         request.setAttribute("page", page);
         if(request.getSession().getAttribute("flush") != null) {
             request.setAttribute("flush", request.getSession().getAttribute("flush"));
             request.getSession().removeAttribute("flush");
         }
 
-        RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/users/index.jsp");
+        RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/parts/index.jsp");
         rd.forward(request, response);
     }
+
 }

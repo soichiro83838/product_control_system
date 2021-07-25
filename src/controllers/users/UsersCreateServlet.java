@@ -44,11 +44,11 @@ public class UsersCreateServlet extends HttpServlet {
             e.setEmail(request.getParameter("email"));
             e.setName(request.getParameter("name"));
             e.setPassword(
-                EncryptUtil.getPasswordEncrypt(
-                    request.getParameter("password"),
-                        (String)this.getServletContext().getAttribute("pepper")
-                    )
-                );
+                    EncryptUtil.getPasswordEncrypt(
+                            request.getParameter("password"),
+                            (String)this.getServletContext().getAttribute("pepper")
+                            )
+                    );
             e.setPrivilege(Integer.parseInt(request.getParameter("privilege")));
 
             Timestamp currentTime = new Timestamp(System.currentTimeMillis());
