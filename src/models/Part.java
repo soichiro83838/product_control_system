@@ -67,7 +67,7 @@ public class Part {
         this.id = id;
     }
 
-    public User getEmployee() {
+    public User getUser() {
         return user;
     }
 

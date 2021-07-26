@@ -32,7 +32,7 @@
         </c:if>
         <c:if test="${sessionScope.login_user != null}">
             <center>
-                <a href="<c:url value='/parts/create' />">部品登録</a>
+                <a href="<c:url value='/parts/new' />">部品登録</a>
             </center>&nbsp;
              <br />
             <br />

@@ -24,8 +24,7 @@
                         <td class="part_partname"><c:out value="${part.name}" /></td>
                         <td class="part_image"><c:out value="${part.image}" /></td>
                         <td class="part_quality_statement">${part.quality_statement}</td>
-                        <td class="part_date"><fmt:formatDate
-                                value='${part.part_date}' pattern='yyyy-MM-dd' /></td>
+                        <td class="part_date"><fmt:formatDate value='${part.part_date}' pattern='yyyy-MM-dd' /></td>
                         <td class="part_action"><a
                             href="<c:url value='/parts/show?id=${part.id}' />">詳細を見る</a></td>
                     </tr>
