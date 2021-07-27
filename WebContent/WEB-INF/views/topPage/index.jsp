@@ -32,12 +32,12 @@
         </c:if>
         <c:if test="${sessionScope.login_user != null}">
             <center>
-                <a href="<c:url value='/parts/new' />">部品登録</a>
+                <a href="<c:url value='/products/new' />">製品登録</a>
             </center>&nbsp;
              <br />
             <br />
             <center>
-                <a href="<c:url value='/parts/index' />">部品一覧</a>
+                <a href="<c:url value='/products/index' />">製品一覧</a>
             </center>&nbsp;
               <br />
             <br />

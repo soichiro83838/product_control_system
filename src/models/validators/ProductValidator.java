@@ -3,15 +3,15 @@ package models.validators;
 import java.util.ArrayList;
 import java.util.List;
 
-import models.Part;
+import models.Product;
 
-public class PartValidator {
-    public static List<String> validate(Part r) {
+public class ProductValidator {
+    public static List<String> validate(Product r) {
         List<String> errors = new ArrayList<String>();
 
-        String partname_error = _validatePartname(r.getPartname());
-        if(!partname_error.equals("")) {
-            errors.add(partname_error);
+        String productname_error = _validateProductname(r.getProductname());
+        if(!productname_error.equals("")) {
+            errors.add(productname_error);
         }
 
         String modelnumber_error = _validateModelnumber(r.getModelnumber());
@@ -32,9 +32,9 @@ public class PartValidator {
         return errors;
     }
 
-    private static String _validatePartname(String partname) {
-        if(partname == null || partname.equals("")) {
-            return "部品名を入力してください。";
+    private static String _validateProductname(String productname) {
+        if(productname == null || productname.equals("")) {
+            return "製品名を入力してください。";
             }
 
         return "";

@@ -14,20 +14,21 @@
 <input type="date" name="date" value="<fmt:formatDate value='${part.date}' pattern='yyyy-MM-dd' />" />
 <br /><br />
 
-<label for="partname">部品名</label><br />
-<input type="text" name="partname" value="${part.partname}" />
+<label for="productname">製品名</label><br />
+<input type="text" name="productname" value="${product.productname}" />
 <br /><br />
 
-<label for="image">画像</label><br />
-<input type="text" name="image" value="${part.image}" />
-<br /><br />
+<label for="image">画像</label>
+<br />
+<input type="file" name="image" value="${product.image}" />
+<br />
 
 <label for="modelnumber">型番</label><br />
-<input type="text" name="modelnumber" value="${part.modelnumber}" />
+<input type="text" name="modelnumber" value="${product.modelnumber}" />
 <br /><br />
 
 <label for="manufacture">メーカー</label><br />
-<input type="text" name="manufacture" value="${part.manufacture}" />
+<input type="text" name="manufacture" value="${product.manufacture}" />
 <br /><br />
 
 <input type="hidden" name="_token" value="${_token}" />

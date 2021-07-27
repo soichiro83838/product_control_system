@@ -1,4 +1,4 @@
-package controllers.parts;
+package controllers.products;
 
 import java.io.IOException;
 import java.util.List;
@@ -11,20 +11,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import models.Part;
+import models.Product;
 import utils.DBUtil;
 
 /**
  * Servlet implementation class ReportsIndexServlet
  */
-@WebServlet("/parts/index")
-public class PartsIndexServlet extends HttpServlet {
+@WebServlet("/products/index")
+public class ProductsIndexServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public PartsIndexServlet() {
+    public ProductsIndexServlet() {
         super();
     }
 
@@ -40,25 +40,25 @@ public class PartsIndexServlet extends HttpServlet {
         } catch(Exception e) {
             page = 1;
         }
-        List<Part> parts = em.createNamedQuery("getAllParts", Part.class)
+        List<Product> products = em.createNamedQuery("getAllProducts", Product.class)
                                   .setFirstResult(15 * (page - 1))
                                   .setMaxResults(15)
                                   .getResultList();
 
-        long parts_count = (long)em.createNamedQuery("getPartsCount", Long.class)
+        long products_count = (long)em.createNamedQuery("getProductsCount", Long.class)
                                      .getSingleResult();
 
         em.close();
 
-        request.setAttribute("parts", parts);
-        request.setAttribute("parts_count", parts_count);
+        request.setAttribute("products", products);
+        request.setAttribute("products_count", products_count);
         request.setAttribute("page", page);
         if(request.getSession().getAttribute("flush") != null) {
             request.setAttribute("flush", request.getSession().getAttribute("flush"));
             request.getSession().removeAttribute("flush");
         }
 
-        RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/parts/index.jsp");
+        RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/products/index.jsp");
         rd.forward(request, response);
     }
 

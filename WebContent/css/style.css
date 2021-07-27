@@ -138,23 +138,23 @@ select {
 h1 a {
     color: #eeeeee;
 }
-table#part_list th {
+table#product_list th {
     font-weight: bold;
     padding: 10px 2%;
 }
 
-table#part_list .part_name {
+table#product_list .product_name {
     width: 20%;
     padding: 10px 2%;
 }
-table#part_list .part_date {
+table#product_list .product_date {
     width: 20%;
 }
 
-table#part_list .part_quality_statement {
+table#product_list .product_quality_statement {
     width: 37%;
 }
 
-table#part_list .part_action {
+table#product_list .product_action {
     width: 13%;
 }

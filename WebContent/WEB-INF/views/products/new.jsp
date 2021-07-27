@@ -4,10 +4,10 @@
     <c:param name="content">
         <h2>部品　新規登録ページ</h2>
 
-        <form method="POST" action="<c:url value='/parts/create' />">
+        <form method="POST" action="<c:url value='/products/create' />">
             <c:import url="_form.jsp" />
         </form>
 
-        <p><a href="<c:url value='/parts/index' />">一覧に戻る</a></p>
+        <p><a href="<c:url value='/products/index' />">一覧に戻る</a></p>
     </c:param>
 </c:import>

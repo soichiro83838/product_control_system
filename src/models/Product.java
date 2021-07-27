@@ -14,26 +14,26 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
-@Table(name = "parts")
-//全てのpartを表示する
+@Table(name = "products")
+//全てのproductを表示する
 @NamedQueries({
     @NamedQuery(
-        name = "getAllParts",
-        query = "SELECT r FROM Part AS r ORDER BY r.id DESC"
+        name = "getAllProducts",
+        query = "SELECT r FROM Product AS r ORDER BY r.id DESC"
     ),
-    //全てのpartを数える
+    //全てのproductを数える
     @NamedQuery(
-        name = "getPartsCount",
-        query = "SELECT COUNT(r) FROM Part AS r"
+        name = "getProductsCount",
+        query = "SELECT COUNT(r) FROM Product AS r"
     ),
-    // あるuserが投稿したpostを表示する
-    @NamedQuery(name = "getMyAllParts", query = "SELECT p FROM Part AS p WHERE p.user = :user ORDER BY p.id DESC"),
-    // あるuserが投稿したpostの数を数える
-    @NamedQuery(name = "getMyPartsCount", query = "SELECT COUNT(p) FROM Part AS p WHERE p.user = :user")
+    // あるuserが投稿したproductを表示する
+    @NamedQuery(name = "getMyAllProducts", query = "SELECT p FROM Product AS p WHERE p.user = :user ORDER BY p.id DESC"),
+    // あるuserが投稿したproductの数を数える
+    @NamedQuery(name = "getMyProductsCount", query = "SELECT COUNT(p) FROM Product AS p WHERE p.user = :user")
 
 })
 @Entity
-public class Part {
+public class Product {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -46,8 +46,8 @@ public class Part {
     @Column(name = "date", nullable = false)
     private Date date;
 
-    @Column(name = "partname", length = 255, nullable = false)
-    private String partname;
+    @Column(name = "productname", length = 255, nullable = false)
+    private String productname;
 
     @Lob
     @Column(name = "modelnumber", nullable = false)
@@ -83,12 +83,12 @@ public class Part {
         this.date = date;
     }
 
-    public String getPartname() {
-        return partname;
+    public String getProductname() {
+        return productname;
     }
 
-    public void setPartname(String partname) {
-        this.partname = partname;
+    public void setProductname(String productname) {
+        this.productname = productname;
     }
 
     public String getModelnumber() {
