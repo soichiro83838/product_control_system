@@ -24,7 +24,7 @@
                         <td class="product_productname"><c:out
                                 value="${product.productname}" /></td>
                         <td class="product_image"><img
-                            src="https://test2195.s3.us-east-2.amazonaws.com/uploads/${product.image}"
+                            src="https://test8291.s3.amazonaws.com/uploads/${product.image}"
                             style="width: 60%" alt="投稿画像"></td>
                         <td class="qualities_quality_statement">${qualities.quality_statement}</td>
                         <td class="qualities_date"><fmt:formatDate
