@@ -19,7 +19,7 @@
         <br />
         <br />
         <c:if test="${sessionScope.login_user == null}">
-            <center>
+             <center>
                 <a href="<c:url value='/login' />">ログイン</a>
             </center>&nbsp;
     <br />

@@ -5,7 +5,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 public class DBUtil {
-    private static final String PERSISTENCE_UNIT_NAME = "quality_control_system";
+    private static final String PERSISTENCE_UNIT_NAME = "product_control";
     private static EntityManagerFactory emf;
 
     public static EntityManager createEntityManager() {
