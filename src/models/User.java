@@ -14,21 +14,21 @@ import javax.persistence.Table;
 @Table(name = "users")
 @NamedQueries({
     @NamedQuery(
-        name = "getAllUsers",
-        query = "SELECT e FROM User AS e ORDER BY e.id DESC"
-    ),
+            name = "getAllUsers",
+            query = "SELECT e FROM User AS e ORDER BY e.id DESC"
+            ),
     @NamedQuery(
-        name = "getUsersCount",
-        query = "SELECT COUNT(e) FROM User AS e"
-    ),
+            name = "getUsersCount",
+            query = "SELECT COUNT(e) FROM User AS e"
+            ),
     @NamedQuery(
-        name = "checkRegisteredEmail",
-        query = "SELECT COUNT(e) FROM User AS e WHERE e.email = :email"
-    ),
+            name = "checkRegisteredEmail",
+            query = "SELECT COUNT(e) FROM User AS e WHERE e.email = :email"
+            ),
     @NamedQuery(
-        name = "checkLoginEmailAndPassword",
-        query = "SELECT e FROM User AS e WHERE e.email = :email AND e.password = :pass"
-    )
+            name = "checkLoginEmailAndPassword",
+            query = "SELECT e FROM User AS e WHERE e.email = :email AND e.password = :pass"
+            )
 })
 @Entity
 public class User {

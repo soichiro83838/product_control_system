@@ -41,12 +41,12 @@ public class ProductsIndexServlet extends HttpServlet {
             page = 1;
         }
         List<Product> products = em.createNamedQuery("getAllProducts", Product.class)
-                                  .setFirstResult(15 * (page - 1))
-                                  .setMaxResults(15)
-                                  .getResultList();
+                .setFirstResult(15 * (page - 1))
+                .setMaxResults(15)
+                .getResultList();
 
         long products_count = (long)em.createNamedQuery("getProductsCount", Long.class)
-                                     .getSingleResult();
+                .getSingleResult();
 
         em.close();
 
@@ -61,5 +61,4 @@ public class ProductsIndexServlet extends HttpServlet {
         RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/products/index.jsp");
         rd.forward(request, response);
     }
-
 }

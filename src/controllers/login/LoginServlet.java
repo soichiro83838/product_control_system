@@ -60,19 +60,18 @@ public class LoginServlet extends HttpServlet {
 
         if(email != null && !email.equals("") && plain_pass != null && !plain_pass.equals("")) {
             EntityManager em = DBUtil.createEntityManager();
-
             String password = EncryptUtil.getPasswordEncrypt(
                     plain_pass,
                     (String)this.getServletContext().getAttribute("pepper")
                     );
 
 
-            // emailとパスワードが正しいかチェックする
+            // メールアドレスとパスワードが正しいかチェックする
             try {
                 e = em.createNamedQuery("checkLoginEmailAndPassword", User.class)
-                      .setParameter("email", email)
-                      .setParameter("pass", password)
-                      .getSingleResult();
+                        .setParameter("email", email)
+                        .setParameter("pass", password)
+                        .getSingleResult();
             } catch(NoResultException ex) {}
 
             em.close();
@@ -90,13 +89,12 @@ public class LoginServlet extends HttpServlet {
 
             RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/login/login.jsp");
             rd.forward(request, response);
+
         } else {
             // 認証できたらログイン状態にしてトップページへリダイレクト
             request.getSession().setAttribute("login_user", e);
-
             request.getSession().setAttribute("flush", "ログインしました。");
-            response.sendRedirect(request.getContextPath() + "/");
+            response.sendRedirect(request.getContextPath() + "/products/index");
         }
     }
-
 }

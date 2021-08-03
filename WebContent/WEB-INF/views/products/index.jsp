@@ -15,9 +15,9 @@
                 <tr>
                     <th class="product_productname">製品名</th>
                     <th class="product_image">画像</th>
-                    <th class="qualities_quality_statement">品質状況</th>
-                    <th class="qualities_date">品質入力日時</th>
-                    <th class="product_action">操作</th>
+                    <th class="modelnumber">型番</th>
+                    <th class="manufacture">メーカー</th>
+                    <th class="date">製品登録日</th>
                 </tr>
                 <c:forEach var="product" items="${products}" varStatus="status">
                     <tr class="row${status.count % 2}">
@@ -26,11 +26,9 @@
                         <td class="product_image"><img
                             src="https://test8291.s3.amazonaws.com/uploads/${product.image}"
                             style="width: 60%" alt="投稿画像"></td>
-                        <td class="qualities_quality_statement">${qualities.quality_statement}</td>
-                        <td class="qualities_date"><fmt:formatDate
-                                value='${qualities.date}' pattern='yyyy-MM-dd' /></td>
-                        <td class="product_action"><a
-                            href="<c:url value='/products/show?id=${product.id}' />">詳細を見る</a></td>
+                        <td class="modelnumber">${product.modelnumber}</td>
+                        <td class="manufacture">${product.manufacture}</td>
+                        <td class="date">${product.date}</td>
                     </tr>
                 </c:forEach>
             </tbody>

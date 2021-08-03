@@ -31,7 +31,6 @@ public class ProductsNewServlet extends HttpServlet {
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setAttribute("_token", request.getSession().getId());
-
         Product r = new Product();
         r.setDate(new Date(System.currentTimeMillis()));
         request.setAttribute("product", r);
@@ -39,5 +38,4 @@ public class ProductsNewServlet extends HttpServlet {
         RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/products/new.jsp");
         rd.forward(request, response);
     }
-
 }

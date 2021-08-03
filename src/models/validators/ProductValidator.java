@@ -35,7 +35,7 @@ public class ProductValidator {
     private static String _validateProductname(String productname) {
         if(productname == null || productname.equals("")) {
             return "製品名を入力してください。";
-            }
+        }
 
         return "";
     }
@@ -43,7 +43,7 @@ public class ProductValidator {
     private static String _validateModelnumber(String modelnumber) {
         if(modelnumber == null || modelnumber.equals("")) {
             return "型番を入力してください。";
-            }
+        }
 
         return "";
     }
@@ -51,7 +51,7 @@ public class ProductValidator {
     private static String _validateManufacture(String manufacture) {
         if(manufacture == null || manufacture.equals("")) {
             return "メーカーを入力してください。";
-            }
+        }
 
         return "";
     }
@@ -59,7 +59,7 @@ public class ProductValidator {
     private static String _validateImage(String image) {
         if(image == null || image.equals("")) {
             return "ファイルを添付してください。";
-            }
+        }
 
         return "";
     }

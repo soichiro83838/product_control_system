@@ -8,45 +8,22 @@
                 <c:out value="${flush}"></c:out>
             </div>
         </c:if>
-        <center>
-            <h2>品質状況</h2>
-        </center>
-        <center>
-            <div class="h3-box">
-                <p>良好</p>
-            </div>
-        </center>
         <br />
         <br />
+        <center>
+            <h2>製品管理システムへようこそ</h2>
+        </center>&nbsp;
         <c:if test="${sessionScope.login_user == null}">
-             <center>
+            <center>
                 <a href="<c:url value='/login' />">ログイン</a>
             </center>&nbsp;
-    <br />
+            <br />
             <br />
             <center>
                 <a href="<c:url value='/users/new' />">ユーザー登録</a>
             </center>&nbsp;
-    <br />
-            <br />
-        </c:if>
-        <c:if test="${sessionScope.login_user != null}">
-            <center>
-                <a href="<c:url value='/products/new' />">製品登録</a>
-            </center>&nbsp;
-             <br />
-            <br />
-            <center>
-                <a href="<c:url value='/products/index' />">製品一覧</a>
-            </center>&nbsp;
-              <br />
-            <br />
-            <center>
-                <a href="<c:url value='/logout' />">ログアウト</a>
-            </center>
             <br />
             <br />
         </c:if>
     </c:param>
 </c:import>
-

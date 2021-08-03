@@ -15,22 +15,23 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Table(name = "products")
-//全てのproductを表示する
 @NamedQueries({
     @NamedQuery(
-        name = "getAllProducts",
-        query = "SELECT r FROM Product AS r ORDER BY r.id DESC"
-    ),
-    //全てのproductを数える
+            name = "getAllProducts",
+            query = "SELECT r FROM Product AS r ORDER BY r.id DESC"
+            ),
     @NamedQuery(
-        name = "getProductsCount",
-        query = "SELECT COUNT(r) FROM Product AS r"
-    ),
-    // あるuserが投稿したproductを表示する
-    @NamedQuery(name = "getMyAllProducts", query = "SELECT p FROM Product AS p WHERE p.user = :user ORDER BY p.id DESC"),
-    // あるuserが投稿したproductの数を数える
-    @NamedQuery(name = "getMyProductsCount", query = "SELECT COUNT(p) FROM Product AS p WHERE p.user = :user")
-
+            name = "getProductsCount",
+            query = "SELECT COUNT(r) FROM Product AS r"
+            ),
+    @NamedQuery(
+            name = "getMyAllProducts",
+            query = "SELECT p FROM Product AS p WHERE p.user = :user ORDER BY p.id DESC"
+            ),
+    @NamedQuery(
+            name = "getMyProductsCount",
+            query = "SELECT COUNT(p) FROM Product AS p WHERE p.user = :user"
+            )
 })
 @Entity
 public class Product {

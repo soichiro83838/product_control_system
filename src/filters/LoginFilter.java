@@ -45,18 +45,18 @@ public class LoginFilter implements Filter {
 
             // セッションスコープに保存されたユーザー（ログインユーザー）情報を取得
             User e = (User)session.getAttribute("login_user");
-            // ログインしていない状態で"/login"と"/user/new"と"/index.html"以外にアクセスした場合、トップページへ戻す
+            // ログインしていない状態で"/login"と"/user/new"と"/index.html"と"/users/create"以外にアクセスした場合、トップページへ戻す
             if (e == null && !servlet_path.equals("/login") && !servlet_path.equals("/users/new") && !servlet_path.equals("/index.html") && !servlet_path.equals("/users/create")) {
                 ((HttpServletResponse) response).sendRedirect(context_path + "/index.html");
                 return;
             }
-         // ログインしてる状態で"/login"にアクセスした場合、トップページへ戻す
+            // ログインしてる状態で"/login"にアクセスした場合、トップページへ戻す
             if (e != null && servlet_path.equals("/login")) {
-                    ((HttpServletResponse) response).sendRedirect(context_path + "/index.html");
-                    return;
+                ((HttpServletResponse) response).sendRedirect(context_path + "/index.html");
+                return;
             }
         }
-            chain.doFilter(request, response);
+        chain.doFilter(request, response);
 
     }
 

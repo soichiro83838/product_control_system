@@ -23,7 +23,7 @@ public class EncryptUtil {
 
     public static String getWordEncrypt(String plain) {
         String ret = "";
-        String salt = "6Ab3mtmH"; // salt例
+        String salt = "3Bz7taqJ"; // salt例
         if(plain != null && !plain.equals("")) {
             byte[] bytes;
             String password = plain + salt;

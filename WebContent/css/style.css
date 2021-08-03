@@ -8,7 +8,7 @@ body {
 #header {
     width: 100%;
     height: 70px;
-    background-color: #333333;
+    background-color: #EEEEEE;
 }
 
 #content {
@@ -26,22 +26,10 @@ h2 {
     font-size: 36px;
     margin-bottom: 15px;
 }
-.h3-box {
-  margin: 5px 300px 5px 300px;
-  padding: 3px 5px 3px 5px;
-  background-color: #c5e1a5;
-  border: solid 5px #66bb6a;
-}
-.h3-box p{
-  font-size: 72px;
-  margin: 3px 5px 3px 5px;
-  padding: 3px 5px 3px 5px;
-}
 li {
     margin-top: 10px;
     margin-bottom: 10px;
 }
-
 p {
     margin-top: 15px;
     margin-bottom: 15px;
@@ -97,12 +85,12 @@ button {
     color: #721c24;
     background-color: #f8d7da;
 }
-table#employee_list th {
+table#user_list th {
     width: 30%;
     padding: 10px 2%;
 }
 
-table#employee_list td {
+table#user_list td {
     width: 29%;
     padding: 10px 2%;
 }
@@ -124,7 +112,6 @@ select {
 }
 
 #user_name {
-    color: #cccccc;
     width: 36%;
     padding-right: 3%;
     text-align: right;
@@ -132,11 +119,11 @@ select {
 }
 
 #header a {
-    color: #eeeeee;
+    color: #24738e;
 }
 
 h1 a {
-    color: #eeeeee;
+    color: #24738e;
 }
 table#product_list th {
     font-weight: bold;
@@ -149,10 +136,6 @@ table#product_list .product_name {
 }
 table#product_list .product_date {
     width: 20%;
-}
-
-table#product_list .product_quality_statement {
-    width: 37%;
 }
 
 table#product_list .product_action {

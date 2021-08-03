@@ -30,27 +30,27 @@ public class UserValidator {
         return errors;
     }
 
-    // email
+    // メールアドレス
     private static String validateEmail(String email, Boolean emailDuplicateCheckFlag) {
         // 必須入力チェック
         if(email == null || email.equals("")) {
-            return "emailを入力してください。";
+            return "メールアドレスを入力してください。";
         }
 
-        // すでに登録されているemailとの重複チェック
+        // すでに登録されているメールアドレスとの重複チェック
         if(emailDuplicateCheckFlag) {
             EntityManager em = DBUtil.createEntityManager();
             long users_count = (long)em.createNamedQuery("checkRegisteredEmail", Long.class).setParameter("email", email).getSingleResult();
             em.close();
             if(users_count > 0) {
-                return "入力されたemailの情報はすでに存在しています。";
+                return "入力されたメールアドレスの情報はすでに存在しています。";
             }
         }
 
         return "";
     }
 
-    // 社員名の必須入力チェック
+    // 氏名の必須入力チェック
     private static String validateName(String name) {
         if(name == null || name.equals("")) {
             return "氏名を入力してください。";

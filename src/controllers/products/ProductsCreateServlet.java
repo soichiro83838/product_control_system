@@ -63,67 +63,37 @@ public class ProductsCreateServlet extends HttpServlet {
                 }
                 part.write(filePath);
                 try {
-                        /* S3 */
-                        String region = (String) this.getServletContext().getAttribute("region");
-                        String awsAccessKey = (String) this.getServletContext().getAttribute("awsAccessKey");
-                        String awsSecretKey = (String) this.getServletContext().getAttribute("awsSecretKey");
-                        String bucketName = (String) this.getServletContext().getAttribute("bucketName");
-                        // 認証情報を用意
-                        AWSCredentials credentials = new BasicAWSCredentials(
-                                // アクセスキー
-                                awsAccessKey,
-                                // シークレットキー
-                                awsSecretKey);
-                        // クライアントを生成
-                        AmazonS3 s3 = AmazonS3ClientBuilder.standard()
-                                // 認証情報を設定
-                                .withCredentials(new AWSStaticCredentialsProvider(credentials))
-                                // リージョンを ? に設定
-                                .withRegion(region).build();
-                        // === ファイルから直接アップロードする場合 ===
-                        // アップロードするファイル
-                        File file = new File(filePath);
-                        // ファイルをアップロード
-                        s3.putObject(
-                                // アップロード先バケット名
-                                bucketName,
-                                // アップロード後のキー名
-                                "uploads/" + filename,
-                                // ファイルの実体
-                                file);
-                    } catch (Exception e) {
-                        System.out.println("S3失敗");
-                    }
-//                 // 認証情報を用意
-//                    AWSCredentials credentials = new BasicAWSCredentials(
-//                        // アクセスキー
-//                        "ag956TJam@",
-//                        // シークレットキー
-//                        "tmAW149@2"
-//                    );
-//
-//                    // クライアントを生成
-//                    AmazonS3 client = AmazonS3ClientBuilder
-//                        .standard()
-//                        // 認証情報を設定
-//                        .withCredentials(new AWSStaticCredentialsProvider(credentials))
-//                        // リージョンを AP_NORTHEAST_1(東京) に設定
-//                        .withRegion(Regions.AP_NORTHEAST_1)
-//                        .build();
-//                 // === ファイルから直接アップロードする場合 ===
-//                 // アップロードするファイル
-//                 File file = new File("filePath");
-//                 // ファイルをアップロード
-//                 client.putObject(
-//                         // アップロード先バケット名
-//                         "test2195",
-//                         // アップロード後のキー名
-//                         "uploads/" + filename,
-//                         // ファイルの実体
-//                         file
-//                 );
-//
-               Product r = new Product();
+                    /* S3 */
+                    String region = (String) this.getServletContext().getAttribute("region");
+                    String awsAccessKey = (String) this.getServletContext().getAttribute("awsAccessKey");
+                    String awsSecretKey = (String) this.getServletContext().getAttribute("awsSecretKey");
+                    String bucketName = (String) this.getServletContext().getAttribute("bucketName");
+                    // 認証情報を用意
+                    AWSCredentials credentials = new BasicAWSCredentials(
+                            // アクセスキー
+                            awsAccessKey,
+                            // シークレットキー
+                            awsSecretKey);
+                    // クライアントを生成
+                    AmazonS3 s3 = AmazonS3ClientBuilder.standard()
+                            // 認証情報を設定
+                            .withCredentials(new AWSStaticCredentialsProvider(credentials))
+                            // リージョンを ? に設定
+                            .withRegion(region).build();
+                    // アップロードするファイル
+                    File file = new File(filePath);
+                    // ファイルをアップロード
+                    s3.putObject(
+                            // アップロード先バケット名
+                            bucketName,
+                            // アップロード後のキー名
+                            "uploads/" + filename,
+                            // ファイルの実体
+                            file);
+                } catch (Exception e) {
+                    System.out.println("S3失敗");
+                }
+                Product r = new Product();
 
                 r.setUser((User)request.getSession().getAttribute("login_user"));
 
@@ -189,20 +159,20 @@ public class ProductsCreateServlet extends HttpServlet {
                 }
             }
         }
-        }
-     // 拡張子を変えずに、ランダムな名前のファイルを生成する
-        private String getFileName(Part part) {
-            String[] headerArrays = part.getHeader("Content-Disposition").split(";");
-            String fileName = null;
-            for (String head : headerArrays) {
-                if (head.trim().startsWith("filename")) {
-                    fileName = head.substring(head.indexOf('"')).replaceAll("\"", "");
-                }
+    }
+    // 拡張子を変えずに、ランダムな名前のファイルを生成する
+    private String getFileName(Part part) {
+        String[] headerArrays = part.getHeader("Content-Disposition").split(";");
+        String fileName = null;
+        for (String head : headerArrays) {
+            if (head.trim().startsWith("filename")) {
+                fileName = head.substring(head.indexOf('"')).replaceAll("\"", "");
             }
-            Timestamp currentTime = new Timestamp(System.currentTimeMillis());
-            String randName = EncryptUtil.getWordEncrypt(currentTime.toString());
-            String extension = fileName.substring(fileName.lastIndexOf("."));
-            String rndFileName = randName + extension;
-            return rndFileName;
+        }
+        Timestamp currentTime = new Timestamp(System.currentTimeMillis());
+        String randName = EncryptUtil.getWordEncrypt(currentTime.toString());
+        String extension = fileName.substring(fileName.lastIndexOf("."));
+        String rndFileName = randName + extension;
+        return rndFileName;
     }
 }
