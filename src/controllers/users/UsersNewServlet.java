@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import models.User;
 
 /**
- * Servlet implementation class EmployeesNewServlet
+ * Servlet implementation class UsersNewServlet
  */
 @WebServlet("/users/new")
 public class UsersNewServlet extends HttpServlet {

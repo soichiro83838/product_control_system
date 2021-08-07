@@ -14,7 +14,7 @@ import models.User;
 import utils.DBUtil;
 
 /**
- * Servlet implementation class EmployeesShowServlet
+ * Servlet implementation class UsersShowServlet
  */
 @WebServlet("/users/show")
 public class UsersShowServlet extends HttpServlet {
