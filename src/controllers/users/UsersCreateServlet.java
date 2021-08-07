@@ -18,7 +18,7 @@ import utils.DBUtil;
 import utils.EncryptUtil;
 
 /**
- * Servlet implementation class EmployeesCreateServlet
+ * Servlet implementation class UsersCreateServlet
  */
 @WebServlet("/users/create")
 public class UsersCreateServlet extends HttpServlet {
@@ -53,6 +53,7 @@ public class UsersCreateServlet extends HttpServlet {
 
             Timestamp currentTime = new Timestamp(System.currentTimeMillis());
             e.setDate(currentTime);
+            e.setDelete_flag(0);
 
             List<String> errors = UserValidator.validate(e, true, true);
             if(errors.size() > 0) {
@@ -62,7 +63,7 @@ public class UsersCreateServlet extends HttpServlet {
                 request.setAttribute("user", e);
                 request.setAttribute("errors", errors);
 
-                RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/users/new.jsp");
+                RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/users/index");
                 rd.forward(request, response);
             } else {
                 em.getTransaction().begin();

@@ -60,6 +60,9 @@ public class Product {
     @Column(name = "image", length = 255, nullable = false)
     private String image;
 
+    @Column(name = "delete_flag", nullable = false)
+    private Integer delete_flag;
+
     public Integer getId() {
         return id;
     }
@@ -113,5 +116,13 @@ public class Product {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public Integer getDelete_flag() {
+        return delete_flag;
+    }
+
+    public void setDelete_flag(Integer delete_flag) {
+        this.delete_flag = delete_flag;
     }
 }

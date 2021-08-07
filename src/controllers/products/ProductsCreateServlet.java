@@ -107,8 +107,9 @@ public class ProductsCreateServlet extends HttpServlet {
                 r.setProductname(request.getParameter("productname"));
                 r.setModelnumber(request.getParameter("modelnumber"));
                 r.setManufacture(request.getParameter("manufacture"));
-                // 変数pに画像名をセットする
+                // 変数rに画像名をセットする
                 r.setImage(filename);
+                r.setDelete_flag(0);
 
                 List<String> errors = ProductValidator.validate(r);
                 if(errors.size() > 0) {
@@ -129,7 +130,8 @@ public class ProductsCreateServlet extends HttpServlet {
 
                     response.sendRedirect(request.getContextPath() + "/products/index");
                 }
-            } else { // 画像が選択されなかった場合
+            } else {
+                // 画像が選択されなかった場合
                 // Productのインスタンスを生成
                 Product r = new Product();
 

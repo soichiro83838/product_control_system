@@ -18,9 +18,16 @@
                     <th class="modelnumber">型番</th>
                     <th class="manufacture">メーカー</th>
                     <th class="date">製品登録日</th>
+                    <c:if test="${sessionScope.login_user.privilege == 1}">
+                        <th class="product_delete_flag">削除</th>
+                    </c:if>
                 </tr>
                 <c:forEach var="product" items="${products}" varStatus="status">
                     <tr class="row${status.count % 2}">
+                    <c:choose>
+                            <c:when test="${product.delete_flag == 1}">
+                            </c:when>
+                            <c:otherwise>
                         <td class="product_productname"><c:out
                                 value="${product.productname}" /></td>
                         <td class="product_image"><img
@@ -29,6 +36,12 @@
                         <td class="modelnumber">${product.modelnumber}</td>
                         <td class="manufacture">${product.manufacture}</td>
                         <td class="date">${product.date}</td>
+                         <c:if test="${sessionScope.login_user.privilege == 1}">
+                                    <td class="product_delete_flag"><a
+                                        href="<c:url value='/products/destroy?id=${product.id}' />">この製品を削除する</a></td>
+                                </c:if>
+                            </c:otherwise>
+                        </c:choose>
                     </tr>
                 </c:forEach>
             </tbody>

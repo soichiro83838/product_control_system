@@ -27,7 +27,7 @@ import javax.persistence.Table;
             ),
     @NamedQuery(
             name = "checkLoginEmailAndPassword",
-            query = "SELECT e FROM User AS e WHERE e.email = :email AND e.password = :pass"
+            query = "SELECT e FROM User AS e WHERE e.delete_flag = 0 AND e.email = :email AND e.password = :pass"
             )
 })
 @Entity
@@ -51,6 +51,9 @@ public class User {
 
     @Column(name = "date", nullable = false)
     private Timestamp date;
+
+    @Column(name = "delete_flag", nullable = false)
+    private Integer delete_flag;
 
     public Integer getId() {
         return id;
@@ -98,5 +101,13 @@ public class User {
 
     public void setDate(Timestamp date) {
         this.date = date;
+    }
+
+    public Integer getDelete_flag() {
+        return delete_flag;
+    }
+
+    public void setDelete_flag(Integer delete_flag) {
+        this.delete_flag = delete_flag;
     }
 }

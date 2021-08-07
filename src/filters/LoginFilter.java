@@ -55,6 +55,11 @@ public class LoginFilter implements Filter {
                 ((HttpServletResponse) response).sendRedirect(context_path + "/index.html");
                 return;
             }
+            // ログインしてる状態で"/users/destroy"と"/products/destroy"と"/products/new"にアクセスした場合、製品一覧へ戻す
+            if (e != null && e.getPrivilege() == 0 && ( servlet_path.equals("/users/destroy") ||  servlet_path.equals("/products/destroy") ||  servlet_path.equals("/products/new"))) {
+                ((HttpServletResponse) response).sendRedirect(context_path + "/products/index");
+                return;
+            }
         }
         chain.doFilter(request, response);
 

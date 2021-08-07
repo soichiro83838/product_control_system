@@ -14,14 +14,31 @@
                 <tr>
                     <th>メールアドレス</th>
                     <th>氏名</th>
-                    <th>詳細</th>
+                    <th>権限</th>
+                    <th>登録日時</th>
+                    <c:if test="${sessionScope.login_user.privilege == 1}">
+                        <th>削除</th>
+                    </c:if>
                 </tr>
                 <c:forEach var="user" items="${users}" varStatus="status">
                     <tr class="row${status.count % 2}">
+                    <c:choose>
+                            <c:when test="${user.delete_flag == 1}">
+                            </c:when>
+                            <c:otherwise>
                         <td><c:out value="${user.email}" /></td>
                         <td><c:out value="${user.name}" /></td>
-                        <td><a href="<c:url value='/users/show?id=${user.id}' />">詳細を表示</a>
-                        </td>
+                        <td><c:choose>
+                                        <c:when test="${user.privilege == 1}">工場長</c:when>
+                                        <c:otherwise>一般</c:otherwise>
+                                    </c:choose></td>
+                                     <td><c:out value="${user.date}" /></td>
+                                <c:if test="${sessionScope.login_user.privilege == 1}">
+                                    <td><a
+                                        href="<c:url value='/users/destroy?id=${user.id}' />">このユーザーを削除する</a>
+                                </c:if>
+                               </c:otherwise>
+                        </c:choose>
                     </tr>
                 </c:forEach>
             </tbody>
@@ -41,8 +58,5 @@
                 </c:choose>
             </c:forEach>
         </div>
-        <p>
-            <a href="<c:url value='/users/new' />">新規ユーザの登録</a>
-        </p>
     </c:param>
 </c:import>

@@ -14,7 +14,7 @@
 <label for="date">日付</label>
 <br />
 <input type="date" name="date"
-    value="<fmt:formatDate value='${part.date}' pattern='yyyy-MM-dd' />" />
+    value="<fmt:formatDate value='${product.date}' pattern='yyyy-MM-dd' />" />
 <br />
 <br />
 

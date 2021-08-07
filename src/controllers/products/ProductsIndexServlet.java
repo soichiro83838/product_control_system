@@ -15,7 +15,7 @@ import models.Product;
 import utils.DBUtil;
 
 /**
- * Servlet implementation class ReportsIndexServlet
+ * Servlet implementation class ProductsIndexServlet
  */
 @WebServlet("/products/index")
 public class ProductsIndexServlet extends HttpServlet {
