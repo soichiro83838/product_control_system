@@ -38,7 +38,7 @@ product_control_systemは以下の機能を実装しています。
 
 
 
-# 使用方法
+# ユーザー登録/製品登録の方法
 動画をご確認ください。
 
 ## Heroku URL
